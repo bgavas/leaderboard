@@ -10,6 +10,7 @@ require('./db/connectDb');
 const express = require('express');
 const bodyParser = require('body-parser');
 const initializeSwagger = require('./util/swagger');
+const models = require('./models');
 
 const app = express();
 const port = process.env.PORT;
@@ -19,6 +20,9 @@ app.use(bodyParser.json());
 
 // Initialize swagger
 initializeSwagger(app);
+
+// Sync db
+models.sequelize.sync({ /* alter: true, */ /* force: true */ });
 
 // Start server
 app.listen(port, () => {
