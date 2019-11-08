@@ -22,8 +22,20 @@ module.exports = (req, res, next) => {
                         display_name: displayName,
                         country
                     },{ transaction: t })
-                    // Add user to redis
-                    .then(user => client.zaddAsync(REDIS_SET.USERS, 0, user.id))
+                    .then(user => {
+
+                        let promises = [];
+                        
+                        // Add user to redis
+                        promises.push(client.zaddAsync(REDIS_SET.USERS, 0, user.id));
+                        
+                        // Add user to redis with country
+                        promises.push(client.zaddAsync(country, 0, user.id));
+
+                        // Wait promises
+                        return Promise.all(promises);
+                    
+                    })
                     .then(() => addedCount++);
                     
             })
