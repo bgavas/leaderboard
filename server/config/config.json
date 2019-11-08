@@ -6,7 +6,10 @@
 		"DATABASE_HOST": "localhost",
 		"DATABASE_PASSWORD": "12345678",
 		"DATABASE_USER": "postgreuser",
-		"PORT": 2525
+		"PORT": 2525,
+		"REDIS_HOST": "127.0.0.1",
+		"REDIS_PORT": 6379,
+		"REDIS_PASSWORD": ""
 	},
 	"development": {
 		"API_URL": "http://localhost:2525",
@@ -15,6 +18,9 @@
 		"DATABASE_HOST": "localhost",
 		"DATABASE_PASSWORD": "12345678",
 		"DATABASE_USER": "postgreuser",
-		"PORT": 2525
+		"PORT": 2525,
+		"REDIS_HOST": "127.0.0.1",
+		"REDIS_PORT": 6379,
+		"REDIS_PASSWORD": ""
 	}
 }

@@ -6,6 +6,8 @@ require('./config/config.js');
 require('./util/helper');
 // Connect to db
 require('./db/connectDb');
+// Connect to redis
+require('./db/redis');
 
 const express = require('express');
 const bodyParser = require('body-parser');
