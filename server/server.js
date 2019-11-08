@@ -11,6 +11,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const initializeSwagger = require('./util/swagger');
 const models = require('./models');
+const routes = require('./routes');
 
 const app = express();
 const port = process.env.PORT;
@@ -20,6 +21,14 @@ app.use(bodyParser.json());
 
 // Initialize swagger
 initializeSwagger(app);
+
+// Define routes
+Object.keys(routes).forEach(key => {
+    // Versioning
+    AVAILABLE_VERSIONS.forEach(version => {
+        app.use(`/api/${version}/` + key, routes[key](version));
+    });
+});
 
 // Sync db
 models.sequelize.sync({ /* alter: true, */ /* force: true */ });

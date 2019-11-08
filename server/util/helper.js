@@ -16,7 +16,7 @@ const defineRoutes = (routes, routeName, version) => {
 
         // Set controller
         router[endpoint.type](endpoint.path, handlers,
-            require(`./../controller/${version}/${routeName}/${endpoint.controller}`));
+            require(`./../controllers/${version}/${routeName}/${endpoint.controller}`));
 
     });
 
