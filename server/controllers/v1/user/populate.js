@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
             return models.sequelize.transaction(t => {
 
                 // Random score
-                const score = Math.floor(Math.random() * Math.floor(10000));
+                const score = Math.floor(Math.random() * Math.floor(100000));
                             
                 // Add user to database
                 return models.user.create({
