@@ -64,7 +64,9 @@ module.exports = (req, res, next) => {
 
         // Return success
         return next({
-            data: {},
+            data: {
+                addedUserCount: addedCount
+            },
             message: `User table populated succesfully by ${addedCount}`,
             status: RESPONSE_STATUS.SUCCESS
         });
@@ -108,6 +110,9 @@ module.exports = (req, res, next) => {
  *             description: Authentication token
  *         schema:
  *           type: object
+ *           properties:
+ *             addedUserCount:
+ *               type: integer
  *       400:
  *         description:
  *         schema:

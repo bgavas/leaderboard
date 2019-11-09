@@ -8,7 +8,10 @@ const sequelize = new Sequelize(
         host: process.env.DATABASE_HOST,
         dialect: process.env.DATABASE_DIALECT,
         operatorsAliases: '',
-        logging: false
+        logging: false,
+        dialectOptions: {
+            ssl: true
+        }
     }
 );
 

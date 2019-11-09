@@ -22,5 +22,17 @@
 		"REDIS_HOST": "127.0.0.1",
 		"REDIS_PORT": 6379,
 		"REDIS_PASSWORD": ""
+	},
+	"production": {
+		"API_URL": "https://leaderboardgj.herokuapp.com",
+		"DATABASE_DB": "d34lbropvu8rui",
+		"DATABASE_DIALECT": "postgres",
+		"DATABASE_HOST": "ec2-46-137-187-23.eu-west-1.compute.amazonaws.com",
+		"DATABASE_PASSWORD": "caaeab04030ab1b502083a1724eefdbb510a8f2fb2eb97ff8e84f3e0b3368f19",
+		"DATABASE_USER": "xbtgpvghchneeo",
+		"PORT": 2525,
+		"REDIS_HOST": "redis-16355.c3.eu-west-1-1.ec2.cloud.redislabs.com",
+		"REDIS_PORT": 16355,
+		"REDIS_PASSWORD": "23zmxwF0C1HQMuxfFYPx2HWjs1HqGT7X"
 	}
 }
