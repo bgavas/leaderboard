@@ -4,15 +4,17 @@
  * @swagger
  * definition:
  * 
- *   user:
+ *   leaderboard:
  *     properties:
  *       id:
  *         type: string
  *       displayName:
  *         type: string
- *       points:
- *         type: integer
  *       rank:
  *         type: integer
+ *       points:
+ *         type: integer
+ *       country:
+ *         type: string
  * 
  */

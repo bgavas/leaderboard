@@ -47,7 +47,7 @@ module.exports = (req, res, next) => {
         // Fail
         .catch(error => next({
             data: error,
-            message: `Failed while retrieving user profile by id: ${req.params.userId}.`,
+            message: `Failed while retrieving user profile by id: ${req.params.userId}`,
             status: RESPONSE_STATUS.FAIL
         }));
 
@@ -75,10 +75,7 @@ module.exports = (req, res, next) => {
  *             description: Authentication token
  *         schema:
  *           type: object
- *           properties:
- *             user:
- *               type: object
- *               $ref: '#/definitions/user'
+ *           $ref: '#/definitions/user'
  *       400:
  *         description: Code = 3000
  *         schema:

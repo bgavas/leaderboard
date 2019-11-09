@@ -19,4 +19,9 @@ module.exports = {
         AUTHENTICATION_FAILED: 'Authentication fail'
     },
 
+    PAGINATION: {
+        DEFAULT_SIZE: 10,
+        DEFAULT_PAGE: 0
+    }
+
 };

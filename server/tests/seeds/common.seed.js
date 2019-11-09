@@ -28,15 +28,19 @@ const users = [{
 }];
 
 const populateTables = (done) => {
+    // Populate user table
     models.user.bulkCreate(users)
+        // Populate user in redis
         .then(() => client.zadd(REDIS_SET.USERS,
             users[0].score, users[0].id, users[1].score, users[1].id,
             users[2].score, users[2].id, users[3].score, users[3].id)
         )
+        // Populate AVAILABLE_COUNTRIES[0] in redis
         .then(() => client.zadd(AVAILABLE_COUNTRIES[0],
             users[0].score, users[0].id, users[1].score, users[1].id,
             users[2].score, users[2].id)
         )
+        // Populate AVAILABLE_COUNTRIES[1] in redis
         .then(() => client.zadd(AVAILABLE_COUNTRIES[1],
             users[3].score, users[3].id)
         )
