@@ -51,7 +51,7 @@ let expressResult = (result, req, res, next) => {
 		// Known error
 		if (err) returnObject = { code: err.code, message: err.message };
 		// Unknown error
-		else returnObject = { code: errors.UNKNOWN.code, message: errors.UNKNOWN.message };
+		else returnObject = { code: errors.UNKNOWN_ERROR.code, message: errors.UNKNOWN_ERROR.message };
 
 		// Log warning
 		logger.warn((result.data.stack ? result.data.stack : '') + '\n' + JSON.stringify(returnObject, null, 2));

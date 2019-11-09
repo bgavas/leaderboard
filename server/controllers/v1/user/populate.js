@@ -16,26 +16,31 @@ module.exports = (req, res, next) => {
         const addUser = (displayName, country) => {
             // Start transaction
             return models.sequelize.transaction(t => {
+
+                // Random score
+                const score = Math.floor(Math.random() * Math.floor(10000));
                             
                 // Add user to database
                 return models.user.create({
-                        display_name: displayName,
-                        country
+                        displayName,
+                        country,
+                        score
                     },{ transaction: t })
                     .then(user => {
 
                         let promises = [];
                         
                         // Add user to redis
-                        promises.push(client.zaddAsync(REDIS_SET.USERS, 0, user.id));
+                        promises.push(client.zaddAsync(REDIS_SET.USERS, score, user.id));
                         
                         // Add user to redis with country
-                        promises.push(client.zaddAsync(country, 0, user.id));
+                        promises.push(client.zaddAsync(country, score, user.id));
 
                         // Wait promises
                         return Promise.all(promises);
                     
                     })
+                    // Increment add count
                     .then(() => addedCount++);
                     
             })

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.UUID
         },
-        display_name: {
+        displayName: {
             allowNull: false,
             notEmpty: true,
             type: DataTypes.STRING
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         indexes: [
             {
               unique: true,
-              fields: ['display_name']
+              fields: ['displayName']
             }
         ]
     });
