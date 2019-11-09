@@ -9,6 +9,14 @@ const routes = [{
     path: '/',
     type: 'get',
     versions: ['v1']
+}, {
+    controller: 'getCountrySpecific',
+    description: 'Get leaderboard of a country',
+    fallbackVersion: 'v1',
+    handlers: [],
+    path: '/:countryCode',
+    type: 'get',
+    versions: ['v1']
 }];
 
 // Export route

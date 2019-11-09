@@ -10,24 +10,26 @@ const commonSeed = require('../../../seeds/common.seed');
 
 module.exports = (app, routePrefix) => {
 
-    describe(`GET/${routePrefix}`, () => {
+    describe(`GET/${routePrefix}/:countryCode`, () => {
 
-        it('should get leaderboard', (done) => {
+        it('should get leaderboard for country tr', (done) => {
 
             request(app)
-                .get(`/${routePrefix}`)
+                .get(`/${routePrefix}/${constants.AVAILABLE_COUNTRIES[0]}`)
                 .expect(200)
                 .expect(res => {
 
+                    const users = commonSeed.users.filter(u => u.country === constants.AVAILABLE_COUNTRIES[0]);
+
                     // Get expected size
-                    const expectedSize = commonSeed.users.length > constants.PAGINATION.DEFAULT_SIZE ?
-                        constants.PAGINATION.DEFAULT_SIZE : commonSeed.users.length;
+                    const expectedSize = users.length > constants.PAGINATION.DEFAULT_SIZE ?
+                        constants.PAGINATION.DEFAULT_SIZE : users.length;
 
                     // Check size
                     expect(res.body.length).toBe(expectedSize);
 
                     // Check order
-                    commonSeed.users
+                    users
                         .slice(0)
                         .sort((a, b) => b.score - a.score)
                         .forEach((u, index) => {
@@ -39,18 +41,21 @@ module.exports = (app, routePrefix) => {
 
         });
 
-        it('should get leaderboard with page and size', (done) => {
+        it('should get leaderboard for country tr with page and size', (done) => {
 
             request(app)
-                .get(`/${routePrefix}?page=1&size=1`)
+                .get(`/${routePrefix}/${constants.AVAILABLE_COUNTRIES[0]}?page=1&size=1`)
                 .expect(200)
                 .expect(res => {
+
+                    // Get filtered users
+                    const users = commonSeed.users.filter(u => u.country === constants.AVAILABLE_COUNTRIES[0]);
 
                     // Check size
                     expect(res.body.length).toBe(1);
 
                     // Check order
-                    commonSeed.users
+                    users
                         .slice(0)
                         .sort((a, b) => b.score - a.score)
                         .slice(1, 2)
@@ -58,6 +63,18 @@ module.exports = (app, routePrefix) => {
                             expect(u.id).toBe(res.body[index].id);
                         });
                     
+                })
+                .end(done);
+
+        });
+
+        it('should not get leaderboard if country code not found', (done) => {
+
+            request(app)
+                .get(`/${routePrefix}/incorrect-country-code`)
+                .expect(400)
+                .expect(res => {
+                    expect(res.body.code).toBe(errors.COUNTRY_CODE_NOT_FOUND.code);
                 })
                 .end(done);
 
