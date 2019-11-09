@@ -83,6 +83,12 @@ module.exports = (req, res, next) => {
  *       - name: countryCode
  *         in: path
  *         type: string
+ *       - name: page
+ *         in: query
+ *         type: integer
+ *       - name: size
+ *         in: query
+ *         type: integer
  *     responses:
  *       200:
  *         headers:
