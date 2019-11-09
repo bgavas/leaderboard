@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
 
     let user;
 
-    // Find ticket
+    // Find user by id
     return models.user
         .findByPk(userId)
         .then(u => {
@@ -38,7 +38,7 @@ module.exports = (req, res, next) => {
             data: {
                 id: user.id,
                 displayName: user.displayName,
-                points: parseInt(score),
+                score: parseInt(score),
                 rank: parseInt(rank)
             },
             message: `User profile retrieved for ${req.params.userId}`,

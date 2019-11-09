@@ -12,7 +12,7 @@
  *         type: string
  *       rank:
  *         type: integer
- *       points:
+ *       score:
  *         type: integer
  *       country:
  *         type: string

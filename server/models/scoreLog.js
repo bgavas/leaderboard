@@ -13,6 +13,16 @@ module.exports = (sequelize, DataTypes) => {
             defautlValue: 0,
             type: DataTypes.INTEGER
         },
+        oldScore: {
+            allowNull: false,
+            defautlValue: 0,
+            type: DataTypes.INTEGER
+        },
+        newScore: {
+            allowNull: false,
+            defautlValue: 0,
+            type: DataTypes.INTEGER
+        },
     });
 
 	// Model association

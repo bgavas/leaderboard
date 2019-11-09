@@ -21,7 +21,7 @@ module.exports = (app, routePrefix) => {
                 .expect(res => {
                     expect(res.body.id).toBe(user.id);
                     expect(res.body.displayName).toBe(user.displayName);
-                    expect(res.body.points).toBe(user.score);
+                    expect(res.body.score).toBe(user.score);
                     expect(res.body.rank).toBe(
                         commonSeed.users.slice(0).sort((a, b) => b.score - a.score)
                             .findIndex(u => u.id === user.id)

@@ -25,7 +25,7 @@ module.exports = (req, res, next) => {
 
     let userIds;
 
-    // Find ticket
+    // Get users by rank
     return client
         .zrevrangeAsync(req.params.countryCode, min, max)
         .then(uIds => {

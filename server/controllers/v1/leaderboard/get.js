@@ -16,7 +16,7 @@ module.exports = (req, res, next) => {
 
     let userIds;
 
-    // Find ticket
+    // Get users by rank
     return client
         .zrevrangeAsync(REDIS_SET.USERS, min, max)
         .then(uIds => {

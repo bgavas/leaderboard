@@ -17,6 +17,14 @@ const routes = [{
     path: '/:userId/profile',
     type: 'get',
     versions: ['v1']
+}, {
+    controller: 'uploadScore',
+    description: 'Upload score',
+    fallbackVersion: 'v1',
+    handlers: [],
+    path: '/:userId/score',
+    type: 'post',
+    versions: ['v1']
 }];
 
 // Export route
