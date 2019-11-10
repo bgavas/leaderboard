@@ -7,7 +7,7 @@
 
 # Local
 
-- First, configure environment variables for you environment
+- First, configure environment variables for your environment
 - Config file is located in `server/config/config.json`
 - Test and development databases should be different while only 1 Redis database is required
 - Install packages with `npm i`
