@@ -26,12 +26,14 @@ module.exports = (app, routePrefix) => {
                     // Check size
                     expect(res.body.length).toBe(expectedSize);
 
-                    // Check order
-                    commonSeed.users
+                    const users = commonSeed.users
                         .slice(0)
-                        .sort((a, b) => b.score - a.score)
+                        .sort((a, b) => b.score - a.score);
+
+                    // Check order
+                    res.body
                         .forEach((u, index) => {
-                            expect(u.id).toBe(res.body[index].id);
+                            expect(u.id).toBe(users[index].id);
                         });
                     
                 })

@@ -32,8 +32,9 @@ module.exports = (app, routePrefix) => {
                     expect(res.body.score).toBeTruthy();
                     expect(res.body.newScore).toBeTruthy();
                     expect(res.body.oldScore).toBeTruthy();
+                    expect(res.body.timestamp).toBeTruthy();
 
-                    // Find score log
+                    // Check created score log
                     return models.scoreLog
                         .findOne({
                             where: {
